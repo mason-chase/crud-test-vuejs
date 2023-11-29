@@ -21,8 +21,9 @@
     "resolveJsonModule": true,
     "downlevelIteration": true,
     "paths": {
-      "@/*": ["src/*"],
       "~/*": ["src/*"],
+      "components/*": ["src/infrastructure/components/*"],
+      "assets/*": ["src/presentation/assets/*"],
     },
     "lib": [
       "esnext",
