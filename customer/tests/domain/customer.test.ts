@@ -1,5 +1,9 @@
-import { expect, it, describe, expectTypeOf } from 'vitest'
+import { it, describe, expectTypeOf } from 'vitest'
 import { Customer } from '~/domain/customer'
+
+// According to vitest type documentation typechecking is an expiremntal future and it's only available in beta versions
+// But I didn't want to switch to a beta version therfore type test only works using typescript compiler
+// https://vitest.dev/guide/testing-types#run-typechecking
 
 describe('Customer Domain', () => {
 

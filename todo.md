@@ -10,7 +10,7 @@ Customer:
 - ~~Install pinia & pinia presist~~
 
 - ~~Red phase for customers model (Create tests using vitest/ jest)~~
-- Green phase for customers model (Implement the actual code to pass the above tests)
+- ~~Green phase for customers model (Implement the actual code to pass the above tests)~~
 
 - Red phase for customer store (Create tests using vitest and pinia testing)
 - Green phase for customers store (Implement the actual code to pass the above tests)
