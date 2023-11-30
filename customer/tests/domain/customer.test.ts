@@ -1,10 +1,6 @@
-import { it, describe, expectTypeOf } from 'vitest'
+import { it, describe, expect } from 'vitest'
 import { Customer } from '~/domain/customer'
 import { BaseModel } from '~/domain/base'
-
-// According to vitest type documentation typechecking is an expiremntal future and it's only available in beta versions
-// But I didn't want to switch to a beta version therfore type test only works using typescript compiler
-// https://vitest.dev/guide/testing-types#run-typechecking
 
 describe('Base Model', () => {
 
@@ -12,8 +8,8 @@ describe('Base Model', () => {
 
     const baseModel = new BaseModel()
 
-    expectTypeOf(baseModel.id).toBeString()
-    expectTypeOf(baseModel.createdDate).toEqualTypeOf<Date>()
+    expect(baseModel.id).toBeTypeOf('string')
+    expect(baseModel.createdDate).toBeInstanceOf(Date)
   })
 
 })
@@ -24,14 +20,15 @@ describe('Customer Model', () => {
 
     const customer = new Customer()
 
-    expectTypeOf(customer.id).toBeString()
-    expectTypeOf(customer.createdDate).toEqualTypeOf<Date>()
+    expect(customer.id).toBeTypeOf('string')
+    expect(customer.createdDate).toBeInstanceOf(Date)
 
-    expectTypeOf(customer.lastName).toBeString()
-    expectTypeOf(customer.phoneNumber).toBeString()
-    expectTypeOf(customer.email).toBeString()
-    expectTypeOf(customer.bankAccountNumber).toBeString()
-    expectTypeOf(customer.dateOfBirth).toEqualTypeOf<Date>()
+    expect(customer.firstName).toBeTypeOf('string')
+    expect(customer.lastName).toBeTypeOf('string')
+    expect(customer.phoneNumber).toBeTypeOf('string')
+    expect(customer.email).toBeTypeOf('string')
+    expect(customer.bankAccountNumber).toBeTypeOf('string')
+    expect(customer.dateOfBirth).toBeInstanceOf(Date)
   })
 
 })
