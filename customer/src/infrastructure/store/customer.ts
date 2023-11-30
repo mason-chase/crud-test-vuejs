@@ -10,7 +10,10 @@ export const useCustomerStore = defineStore('customer', {
   actions: {
     clear() {
       this.$reset()
-    }
+    },
+    create(customer: Customer) {
+      this.customers.push(customer)
+    },
   },
   getters: {
     all(state) {
