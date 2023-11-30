@@ -96,4 +96,19 @@ describe('Actions', () => {
     expectTypeOf(customerStore.customers).toBeArray()
     expect(customerStore.customers).toHaveLength(1)
   })
+
+  it('delete', () => {
+    
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+    customerStore.customers = [customer]
+
+    // Act
+    customerStore.delete(customer.id)
+
+    // Assert
+    expectTypeOf(customerStore.customers).toBeArray()
+    expect(customerStore.customers).toHaveLength(0)
+  })
 })
