@@ -39,6 +39,30 @@ export const useCustomerStore = defineStore('customer', {
       const index = this.customers.findIndex((x: Customer) => x.id === customer.id)
       this.customers[index] = customer
       return this.customers[index]
+    },
+    /**
+     * Validates given customer true will be returned if customer is valid.
+     * Validation rules are: firstName, LastName, DateOfBirth, email to be unique in store and valid mobile number is given
+     */
+    validate(customer: Customer): boolean {
+
+      // firstName must be unique
+      if (this.customers.some((x: Customer) => x.firstName === customer.firstName))
+        return false
+
+      // lastName must be unique
+      if (this.customers.some((x: Customer) => x.lastName === customer.lastName))
+        return false
+
+      // email must be unique
+      if (this.customers.some((x: Customer) => x.email === customer.email))
+        return false
+
+      // dateOfBirth must be unique
+      if (this.customers.some((x: Customer) => x.dateOfBirth === customer.dateOfBirth))
+        return false
+
+      return true
     }
   },
   getters: {
