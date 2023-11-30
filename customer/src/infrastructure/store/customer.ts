@@ -14,6 +14,10 @@ export const useCustomerStore = defineStore('customer', {
     create(customer: Customer) {
       this.customers.push(customer)
     },
+    delete(id: string) {
+      const index = this.customers.findIndex((x: Customer) => x.id === id)
+      this.customers.splice(index, 1)
+    }
   },
   getters: {
     all(state) {
