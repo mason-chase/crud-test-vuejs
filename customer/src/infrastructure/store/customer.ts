@@ -14,9 +14,15 @@ export const useCustomerStore = defineStore('customer', {
     create(customer: Customer) {
       this.customers.push(customer)
     },
-    delete(id: string) {
+    delete(id: string): boolean {
       const index = this.customers.findIndex((x: Customer) => x.id === id)
+
+      if (index === -1)
+        return false
+
       this.customers.splice(index, 1)
+      return true
+
     },
     update(customer: Customer): Customer {
       const index = this.customers.findIndex((x: Customer) => x.id === customer.id)
