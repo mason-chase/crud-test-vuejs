@@ -58,4 +58,19 @@ describe('Counter Store', () => {
 
   })
 
+  it('store clear action', () => {
+    
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+    customerStore.customers = [customer]
+
+    // Act
+    customerStore.clear()
+
+    // Assert
+    expectTypeOf(customerStore.customers).toBeArray()
+    expect(customerStore.customers).toHaveLength(0)
+  })
+
 })
