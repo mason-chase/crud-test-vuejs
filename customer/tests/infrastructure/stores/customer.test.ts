@@ -20,7 +20,7 @@ describe('Getters', () => {
 
     // Act
     const result = customerStore.all
-    
+
     // Assert
     expectTypeOf(result).toBeArray()
     expect(result).toHaveLength(1)
@@ -36,7 +36,7 @@ describe('Getters', () => {
 
     // Act
     const result = customerStore.getById(customer.id)
-    
+
     // Assert
     expect(result).toBeInstanceOf(Customer)
     expect(result?.id).toEqual(customer.id)
@@ -52,7 +52,7 @@ describe('Getters', () => {
 
     // Act
     const result = customerStore.getById('1')
-    
+
     // Assert
     expect(result).to.be.null
 
@@ -69,7 +69,7 @@ describe('Actions', () => {
   })
 
   it('clear', () => {
-    
+
     // Arrange
     const customerStore = useCustomerStore()
     const customer = new Customer()
@@ -84,7 +84,7 @@ describe('Actions', () => {
   })
 
   it('create', () => {
-    
+
     // Arrange
     const customerStore = useCustomerStore()
     const customer = new Customer()
@@ -97,23 +97,38 @@ describe('Actions', () => {
     expect(customerStore.customers).toHaveLength(1)
   })
 
-  it('delete', () => {
-    
+  it('delete: not found', () => {
+
     // Arrange
     const customerStore = useCustomerStore()
     const customer = new Customer()
     customerStore.customers = [customer]
 
     // Act
-    customerStore.delete(customer.id)
+    const result = customerStore.delete('1')
 
     // Assert
+    expect(result).toEqual(false)
+  })
+
+  it('delete: found', () => {
+
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+    customerStore.customers = [customer]
+
+    // Act
+    const result = customerStore.delete(customer.id)
+
+    // Assert
+    expect(result).toEqual(true)
     expectTypeOf(customerStore.customers).toBeArray()
     expect(customerStore.customers).toHaveLength(0)
   })
 
   it('update', () => {
-    
+
     // Arrange
     const customerStore = useCustomerStore()
     const customer = new Customer()
