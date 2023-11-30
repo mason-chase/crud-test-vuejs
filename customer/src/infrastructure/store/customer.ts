@@ -7,6 +7,11 @@ export const useCustomerStore = defineStore('customer', {
     customers: [] as Customer[],
   }),
 
+  actions: {
+    clear() {
+      this.$reset()
+    }
+  },
   getters: {
     all(state) {
       return state.customers
