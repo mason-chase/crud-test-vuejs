@@ -111,4 +111,23 @@ describe('Actions', () => {
     expectTypeOf(customerStore.customers).toBeArray()
     expect(customerStore.customers).toHaveLength(0)
   })
+
+  it('update', () => {
+    
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+    customerStore.customers = [customer]
+    const updatedFirstName = 'updated'
+    const oldFirstName = customer.firstName
+
+    // Act
+    customer.firstName = updatedFirstName
+    const result = customerStore.update(customer)
+
+    // Assert
+    expect(result).toBeInstanceOf(Customer)
+    expect(result.firstName).toEqual(updatedFirstName)
+    expect(result.firstName).not.to.equal(oldFirstName)
+  })
 })
