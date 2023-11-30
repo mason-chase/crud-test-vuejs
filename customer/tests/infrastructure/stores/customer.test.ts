@@ -145,4 +145,31 @@ describe('Actions', () => {
     expect(result.firstName).toEqual(updatedFirstName)
     expect(result.firstName).not.to.equal(oldFirstName)
   })
+
+  it('validate: customer is valid', () => {
+
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+
+    // Act
+    const result = customerStore.validate(customer)
+
+    // Assert
+    expect(result).toEqual(true)
+  })
+
+  it('validate: customer is not valid', () => {
+
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+    customerStore.customers = [customer]
+
+    // Act
+    const result = customerStore.validate(customer)
+
+    // Assert
+    expect(result).toEqual(false)
+  })
 })
