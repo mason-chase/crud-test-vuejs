@@ -39,5 +39,6 @@ export const useCustomerStore = defineStore('customer', {
         return state.customers[index]
       }
     }
-  }
+  },
+  persist: true
 })
