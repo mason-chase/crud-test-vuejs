@@ -3,13 +3,13 @@ Core:
 - ~~Migrate to vite~~
 - ~~Adds microfrontend configs~~
 - ~~Install Router~~
-- ~~Install vitest~~
 
 Customer:
 
-- Install pinia & pinia presist
+- ~~Install vitest~~
+- ~~Install pinia & pinia presist~~
 
-- Red phase for customers model (Create tests using vitest/ jest)
+- ~~Red phase for customers model (Create tests using vitest/ jest)~~
 - Green phase for customers model (Implement the actual code to pass the above tests)
 
 - Red phase for customer store (Create tests using vitest and pinia testing)
