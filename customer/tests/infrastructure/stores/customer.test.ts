@@ -3,7 +3,7 @@ import { setActivePinia, createPinia } from 'pinia'
 import { useCustomerStore } from '~/infrastructure/store/customer'
 import { Customer } from '~/domain/customer'
 
-describe('Counter Store', () => {
+describe('Getters', () => {
   beforeEach(() => {
     // creates a fresh pinia and makes it active
     // so it's automatically picked up by any useStore() call
@@ -11,7 +11,7 @@ describe('Counter Store', () => {
     setActivePinia(createPinia())
   })
 
-  it('getters: all', () => {
+  it('all', () => {
 
     // Arrange
     const customerStore = useCustomerStore()
@@ -27,7 +27,7 @@ describe('Counter Store', () => {
 
   })
 
-  it('getters: getById returning customer when found', () => {
+  it('getById: returning customer when found', () => {
 
     // Arrange
     const customerStore = useCustomerStore()
@@ -43,7 +43,7 @@ describe('Counter Store', () => {
 
   })
 
-  it('getters: getById returning null on not found', () => {
+  it('getById returning null on not found', () => {
 
     // Arrange
     const customerStore = useCustomerStore()
@@ -58,7 +58,17 @@ describe('Counter Store', () => {
 
   })
 
-  it('store clear action', () => {
+})
+
+describe('Actions', () => {
+  beforeEach(() => {
+    // creates a fresh pinia and makes it active
+    // so it's automatically picked up by any useStore() call
+    // without having to pass it to it: `useStore(pinia)`
+    setActivePinia(createPinia())
+  })
+
+  it('clear', () => {
     
     // Arrange
     const customerStore = useCustomerStore()
@@ -73,4 +83,17 @@ describe('Counter Store', () => {
     expect(customerStore.customers).toHaveLength(0)
   })
 
+  it('create', () => {
+    
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+
+    // Act
+    customerStore.create(customer)
+
+    // Assert
+    expectTypeOf(customerStore.customers).toBeArray()
+    expect(customerStore.customers).toHaveLength(1)
+  })
 })
