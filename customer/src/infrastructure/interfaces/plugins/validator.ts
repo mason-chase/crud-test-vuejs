@@ -5,6 +5,6 @@ export interface IValidatorResponse {
 
 export enum validatorTypes {
   Required = 'Required',
-  NotEmpty = 'NotEmpty',
+  Unique = 'Unique',
   ValidFormat = 'ValidFormat'
 }

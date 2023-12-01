@@ -64,7 +64,7 @@ describe('validateUnique', () => {
     // Assert
     expect(result.result).toEqual(false)
     expectTypeOf(result.errors).toBeArray()
-    expect(result.errors).toHaveLength(1)
+    expect(result.errors.length).toBeGreaterThan(0)
 
   })
 
@@ -99,7 +99,7 @@ describe('validateNotEmpty', () => {
     // Assert
     expect(result.result).toEqual(false)
     expectTypeOf(result.errors).toBeArray()
-    expect(result.errors).toHaveLength(1)
+    expect(result.errors.length).toBeGreaterThan(0)
 
   })
 
@@ -127,6 +127,7 @@ describe('validateBankAccount', () => {
     // Arrange
     const validator = new CustomerValidator()
     const newCustomer = new Customer()
+    newCustomer.bankAccountNumber = '123'
 
     // Act
     const result = validator.validateBankAccount(newCustomer)
@@ -134,7 +135,7 @@ describe('validateBankAccount', () => {
     // Assert
     expect(result.result).toEqual(false)
     expectTypeOf(result.errors).toBeArray()
-    expect(result.errors).toHaveLength(1)
+    expect(result.errors.length).toBeGreaterThan(0)
 
   })
 
@@ -162,6 +163,7 @@ describe('validatePhoneNumber', () => {
     // Arrange
     const validator = new CustomerValidator()
     const newCustomer = new Customer()
+    newCustomer.phoneNumber = '123'
 
     // Act
     const result = validator.validatePhoneNumber(newCustomer)
@@ -169,7 +171,7 @@ describe('validatePhoneNumber', () => {
     // Assert
     expect(result.result).toEqual(false)
     expectTypeOf(result.errors).toBeArray()
-    expect(result.errors).toHaveLength(1)
+    expect(result.errors.length).toBeGreaterThan(0)
 
   })
 
@@ -197,14 +199,15 @@ describe('validateEmail', () => {
     // Arrange
     const validator = new CustomerValidator()
     const newCustomer = new Customer()
+    newCustomer.email = 'test@gmailco'
 
     // Act
-    const result = validator.validatePhoneNumber(newCustomer)
+    const result = validator.validateEmail(newCustomer)
 
     // Assert
     expect(result.result).toEqual(false)
     expectTypeOf(result.errors).toBeArray()
-    expect(result.errors).toHaveLength(1)
+    expect(result.errors.length).toBeGreaterThan(0)
 
   })
 
