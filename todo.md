@@ -19,11 +19,8 @@ Customer:
 - ~~Green phase for customers validations (Implement the actual code to pass the above tests)~~
 - ~~Refactor validations and make seprate classes~~
 
-- Red phase for customers list (Create tests using vitest)
-- Green phase for customers list (Implement the actual code to pass the above tests)
-
-- Red phase for customers single page (Create tests using vitest)
-- Green phase for customers single page (Implement the actual code to pass the above tests)
+- ~~Implement customer list~~
+- Complete customeer list functionality
 
 - BDD
 
