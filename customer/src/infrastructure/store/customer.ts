@@ -48,8 +48,18 @@ export const useCustomerStore = defineStore('customer', {
      */
     validate(customer: Customer): IValidatorResponse {
       const validator = new Validator()
-      validator.validateNotEmpty(customer)
+      const errors: string[] = []
 
+      errors.concat(validator.validateNotEmpty(customer).errors)
+      errors.concat(validator.validateUnique(this.customers, customer).errors)
+      errors.concat(validator.validateEmail(this.customers).errors)
+      errors.concat(validator.validateBankAccount(this.customers).errors)
+      errors.concat(validator.validatePhoneNumber(this.customers).errors)
+
+      return {
+        result: errors.length === 0,
+        errors: errors
+      }
     }
   },
   getters: {
