@@ -50,7 +50,14 @@ export const useCustomerStore = defineStore('customer', {
       const validator = new Validator()
       let errors: string[] = []
 
-      errors = errors.concat(validator.validateNotEmpty(customer).errors)
+      const validateNotEmpty = validator.validateNotEmpty(customer)
+
+      if (!validateNotEmpty.result)
+        return {
+          result: false,
+          errors: validateNotEmpty.errors
+        }
+
       errors = errors.concat(validator.validateUnique(this.customers, customer).errors)
       errors = errors.concat(validator.validateEmail(this.customers).errors)
       errors = errors.concat(validator.validateBankAccount(this.customers).errors)
