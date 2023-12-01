@@ -48,6 +48,7 @@ export const useCustomerStore = defineStore('customer', {
 
       const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
       const bankNumberRegex = /^4[0-9]{12}(?:[0-9]{3})?$/
+      const phoneNumberRegex = /\+?1?\s*\(?-*\.*(\d{3})\)?\.*-*\s*(\d{3})\.*-*\s*(\d{4})$/
 
       // firstName must be unique
       if (this.customers.some((x: Customer) => x.firstName === customer.firstName))
@@ -69,6 +70,9 @@ export const useCustomerStore = defineStore('customer', {
         return false
 
       if (customer.bankAccountNumber && !bankNumberRegex.test(customer.bankAccountNumber))
+        return false
+
+      if (customer.phoneNumber && !phoneNumberRegex.test(customer.phoneNumber))
         return false
 
       return true
