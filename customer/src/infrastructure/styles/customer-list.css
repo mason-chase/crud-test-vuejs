@@ -1,0 +1,83 @@
+.card {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  height: 100%;
+  border-radius: 13px;
+  padding: 10px;
+  background-color: #dcdcdc;
+}
+
+.text-primary {
+  color: black!important;
+}
+
+.text-secondary {
+  color: #aaa;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+#customerList {
+  height: 90vh;
+  overflow-y: auto;
+
+}
+
+#customerList .customer-list-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+#customerList .customer-list-header .button {
+  padding: 5px 15px;
+  border-radius: 8px;
+  border-color: #ffffff8f;
+  cursor: pointer;
+}
+
+#customerList .customer-list-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#customerList .customer-list-body .customer-card {
+  background-color: #ffffffff;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+#customerList .customer-list-body .customer-card .customer-card-header {
+  display: flex;
+}
+
+#customerList .customer-list-body .customer-card .customer-info {
+  flex-grow: 1;
+  text-align: left;
+}
+
+#customerList .customer-list-body .customer-card .customer-info .main-info {
+  font-size: 32px;
+}
+
+#customerList .customer-list-body .customer-card .customer-info .second-info {
+  margin-left: 10px;
+}
+
+#customerList .customer-list-body .customer-card .customer-card-bottom {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+#customerList .customer-list-body .customer-card .customer-card-header .small-button {
+  cursor: pointer;
+}
+
+#customerList .customer-list-body .customer-card .customer-card-header .small-button.delete {
+  color: #f95e5e;
+}
