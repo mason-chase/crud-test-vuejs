@@ -8,6 +8,7 @@ export class Customer extends BaseModel {
   email: string
   bankAccountNumber: string
   dateOfBirth: string
+  readonly: boolean
 
   constructor(firstName: string = '', lastName: string = '', phoneNumber: string = '', email: string = '', bankAccountNumber: string = '', dateOfBirth: string = '') {
     super()
@@ -18,5 +19,6 @@ export class Customer extends BaseModel {
     this.email = email
     this.bankAccountNumber = bankAccountNumber
     this.dateOfBirth = dateOfBirth
+    this.readonly = false
   }
 }
