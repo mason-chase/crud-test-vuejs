@@ -139,7 +139,7 @@ describe('Actions', () => {
     expect(result.firstName).not.to.equal(oldFirstName)
   })
 
-  it('validate', () => {
+  it('validate customer valid', () => {
 
     // Arrange
     const customerStore = useCustomerStore()
@@ -151,6 +151,20 @@ describe('Actions', () => {
     expect(result.result).toEqual(true)
     expectTypeOf(result.errors).toBeArray()
     expect(result.errors).toHaveLength(0)
+  })
+
+  it('validate customer not valid', () => {
+
+    // Arrange
+    const customerStore = useCustomerStore()
+
+    // Act
+    const result = customerStore.validate(new Customer())
+
+    // Assert
+    expect(result.result).toEqual(false)
+    expectTypeOf(result.errors).toBeArray()
+    expect(result.errors.length).toBeGreaterThan(0)
   })
 
 })
