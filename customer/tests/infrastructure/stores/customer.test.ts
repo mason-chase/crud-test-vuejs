@@ -251,5 +251,35 @@ describe('Actions', () => {
     expect(result).toEqual(false)
   })
 
+  it('validate: customer bankAccountNumber is in correct format', () => {
+
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+    const bankAccountNumber = '4155279860457'
+    customer.bankAccountNumber = bankAccountNumber
+
+    // Act
+    const result = customerStore.validate(customer)
+
+    // Assert
+    expect(result).toEqual(true)
+  })
+
+  it('validate: customer bankAccountNumber is not in correct format', () => {
+
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+    const bankAccountNumber = '112233'
+    customer.bankAccountNumber = bankAccountNumber
+
+    // Act
+    const result = customerStore.validate(customer)
+
+    // Assert
+    expect(result).toEqual(false)
+  })
+
 
 })
