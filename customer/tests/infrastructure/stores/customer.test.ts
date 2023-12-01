@@ -3,6 +3,7 @@ import { setActivePinia, createPinia } from 'pinia'
 import { useCustomerStore } from '~/infrastructure/store/customer'
 import { Customer } from '~/domain/customer'
 import { customer } from '../../mock'
+import { isEmpty } from '~/infrastructure/plugins/validator'
 
 describe('Getters', () => {
   beforeEach(() => {
@@ -91,6 +92,8 @@ describe('Actions', () => {
     // Assert
     expectTypeOf(customerStore.customers).toBeArray()
     expect(customerStore.customers).toHaveLength(1)
+    expect(isEmpty(customer.id)).toEqual(false)
+    expect(isEmpty(customer.createdDate)).toEqual(false)
   })
 
   it('delete: not found', () => {
