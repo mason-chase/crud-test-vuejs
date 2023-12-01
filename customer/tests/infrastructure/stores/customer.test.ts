@@ -281,5 +281,33 @@ describe('Actions', () => {
     expect(result).toEqual(false)
   })
 
+  it('validate: customer phoneNumber is in correct format', () => {
+
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+    customer.phoneNumber = '2024561414'
+
+    // Act
+    const result = customerStore.validate(customer)
+
+    // Assert
+    expect(result).toEqual(true)
+  })
+
+  it('validate: customer phoneNumber is not in correct format', () => {
+
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+    customer.phoneNumber = '12346'
+
+    // Act
+    const result = customerStore.validate(customer)
+
+    // Assert
+    expect(result).toEqual(false)
+  })
+
 
 })
