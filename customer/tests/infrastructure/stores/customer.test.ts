@@ -202,7 +202,7 @@ describe('Actions', () => {
     // Arrange
     const customerStore = useCustomerStore()
     const customer = new Customer()
-    const date = new Date()
+    const date = new Date().toISOString()
     customer.dateOfBirth = date
 
     customerStore.customers = [customer]
