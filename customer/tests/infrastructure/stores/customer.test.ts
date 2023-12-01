@@ -146,19 +146,6 @@ describe('Actions', () => {
     expect(result.firstName).not.to.equal(oldFirstName)
   })
 
-  it('validate: customer is valid', () => {
-
-    // Arrange
-    const customerStore = useCustomerStore()
-    const customer = new Customer()
-
-    // Act
-    const result = customerStore.validate(customer)
-
-    // Assert
-    expect(result).toEqual(true)
-  })
-
   it('validate: customer firstName is not unique', () => {
 
     // Arrange
@@ -230,6 +217,35 @@ describe('Actions', () => {
 
     // Act
     const result = customerStore.validate(newCustomer)
+
+    // Assert
+    expect(result).toEqual(false)
+  })
+
+  it('validate: customer email is correct format', () => {
+
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+    customer.email = 'johndoe@gmail.com'
+
+    // Act
+    const result = customerStore.validate(customer)
+
+    // Assert
+    expect(result).toEqual(true)
+  })
+
+  it('validate: customer email is not correct format', () => {
+
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+    const email = 'johndoe@gmailcom'
+    customer.email = email
+
+    // Act
+    const result = customerStore.validate(customer)
 
     // Assert
     expect(result).toEqual(false)
