@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { Customer } from '~/domain/customer'
 import { IValidatorResponse, validatorTypes } from '~/infrastructure/interfaces/plugins/validator'
 import Validator from '~/infrastructure/plugins/validator'
+import { idGenerator } from '~/domain/base'
 
 export const useCustomerStore = defineStore('customer', {
 
@@ -20,6 +21,8 @@ export const useCustomerStore = defineStore('customer', {
      * Creates given customer
      */
     create(customer: Customer) {
+      customer.id = idGenerator()
+      customer.createdDate = new Date().toISOString()
       this.customers.push(customer)
     },
     /**

@@ -34,7 +34,7 @@ export default class CustomerValidator {
     const errors: string[] = []
 
     for (const [key, value] of Object.entries(customer))
-      if (isEmpty(value))
+      if (!['id', 'createdDate'].includes(key) && isEmpty(value))
         errors.push(this.messageGenerator(key, validatorTypes.Required))
 
     return {
