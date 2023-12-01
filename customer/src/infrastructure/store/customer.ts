@@ -46,6 +46,8 @@ export const useCustomerStore = defineStore('customer', {
      */
     validate(customer: Customer): boolean {
 
+      const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+
       // firstName must be unique
       if (this.customers.some((x: Customer) => x.firstName === customer.firstName))
         return false
@@ -60,6 +62,9 @@ export const useCustomerStore = defineStore('customer', {
 
       // dateOfBirth must be unique
       if (this.customers.some((x: Customer) => x.dateOfBirth === customer.dateOfBirth))
+        return false
+
+      if (!emailRegex.test(customer.email))
         return false
 
       return true
