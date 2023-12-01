@@ -1,15 +1,15 @@
 import { BaseModel } from './base'
 
-export class Customer extends BaseModel{
+export class Customer extends BaseModel {
 
-	firstName: string
-	lastName: string
-	phoneNumber: string
-	email: string
-	bankAccountNumber: string
-	dateOfBirth: Date
-  
-  constructor(firstName: string = '', lastName: string = '', phoneNumber: string = '', email: string = '', bankAccountNumber: string = '', dateOfBirth: Date = new Date(0)) {
+  firstName: string
+  lastName: string
+  phoneNumber: string
+  email: string
+  bankAccountNumber: string
+  dateOfBirth: string
+
+  constructor(firstName: string = '', lastName: string = '', phoneNumber: string = '', email: string = '', bankAccountNumber: string = '', dateOfBirth: string = '') {
     super()
 
     this.firstName = firstName

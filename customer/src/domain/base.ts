@@ -4,10 +4,10 @@ export function idGenerator(n: number = 5): string {
 
 export class BaseModel {
   readonly id: string
-  readonly createdDate: Date
+  readonly createdDate: string
 
   constructor() {
     this.id = idGenerator()
-    this.createdDate = new Date()
+    this.createdDate = new Date().toISOString()
   }
 }
