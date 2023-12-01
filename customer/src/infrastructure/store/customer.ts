@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia'
 import { Customer } from '~/domain/customer'
+import { IValidatorResponse, validatorTypes } from '~/infrastructure/interfaces/plugins/validator'
+import Validator from '~/infrastructure/plugins/validator'
 
 export const useCustomerStore = defineStore('customer', {
 
@@ -44,38 +46,10 @@ export const useCustomerStore = defineStore('customer', {
      * Validates given customer true will be returned if customer is valid.
      * Validation rules are: firstName, LastName, DateOfBirth, email to be unique in store and valid mobile number is given
      */
-    validate(customer: Customer): boolean {
+    validate(customer: Customer): IValidatorResponse {
+      const validator = new Validator()
+      validator.validateNotEmpty(customer)
 
-      const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-      const bankNumberRegex = /^4[0-9]{12}(?:[0-9]{3})?$/
-      const phoneNumberRegex = /\+?1?\s*\(?-*\.*(\d{3})\)?\.*-*\s*(\d{3})\.*-*\s*(\d{4})$/
-
-      // firstName must be unique
-      if (this.customers.some((x: Customer) => x.firstName === customer.firstName))
-        return false
-
-      // lastName must be unique
-      if (this.customers.some((x: Customer) => x.lastName === customer.lastName))
-        return false
-
-      // email must be unique
-      if (this.customers.some((x: Customer) => x.email === customer.email))
-        return false
-
-      // dateOfBirth must be unique
-      if (this.customers.some((x: Customer) => x.dateOfBirth === customer.dateOfBirth))
-        return false
-
-      if (customer.email && !emailRegex.test(customer.email))
-        return false
-
-      if (customer.bankAccountNumber && !bankNumberRegex.test(customer.bankAccountNumber))
-        return false
-
-      if (customer.phoneNumber && !phoneNumberRegex.test(customer.phoneNumber))
-        return false
-
-      return true
     }
   },
   getters: {

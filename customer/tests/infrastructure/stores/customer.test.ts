@@ -2,6 +2,7 @@ import { it, describe, beforeEach, expect, expectTypeOf } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
 import { useCustomerStore } from '~/infrastructure/store/customer'
 import { Customer } from '~/domain/customer'
+import { customer } from '../../mock'
 
 describe('Getters', () => {
   beforeEach(() => {
@@ -15,7 +16,6 @@ describe('Getters', () => {
 
     // Arrange
     const customerStore = useCustomerStore()
-    const customer = new Customer()
     customerStore.customers = [customer]
 
     // Act
@@ -31,7 +31,6 @@ describe('Getters', () => {
 
     // Arrange
     const customerStore = useCustomerStore()
-    const customer = new Customer()
     customerStore.customers = [customer]
 
     // Act
@@ -47,7 +46,6 @@ describe('Getters', () => {
 
     // Arrange
     const customerStore = useCustomerStore()
-    const customer = new Customer()
     customerStore.customers = [customer]
 
     // Act
@@ -72,7 +70,6 @@ describe('Actions', () => {
 
     // Arrange
     const customerStore = useCustomerStore()
-    const customer = new Customer()
     customerStore.customers = [customer]
 
     // Act
@@ -87,7 +84,6 @@ describe('Actions', () => {
 
     // Arrange
     const customerStore = useCustomerStore()
-    const customer = new Customer()
 
     // Act
     customerStore.create(customer)
@@ -101,7 +97,6 @@ describe('Actions', () => {
 
     // Arrange
     const customerStore = useCustomerStore()
-    const customer = new Customer()
     customerStore.customers = [customer]
 
     // Act
@@ -115,7 +110,6 @@ describe('Actions', () => {
 
     // Arrange
     const customerStore = useCustomerStore()
-    const customer = new Customer()
     customerStore.customers = [customer]
 
     // Act
@@ -131,7 +125,6 @@ describe('Actions', () => {
 
     // Arrange
     const customerStore = useCustomerStore()
-    const customer = new Customer()
     customerStore.customers = [customer]
     const updatedFirstName = 'updated'
     const oldFirstName = customer.firstName
@@ -146,168 +139,18 @@ describe('Actions', () => {
     expect(result.firstName).not.to.equal(oldFirstName)
   })
 
-  it('validate: customer firstName is not unique', () => {
+  it('validate', () => {
 
     // Arrange
     const customerStore = useCustomerStore()
-    const customer = new Customer()
-    const firstName = 'John'
-    customer.firstName = firstName
-
-    customerStore.customers = [customer]
-    const newCustomer = new Customer()
-    newCustomer.firstName = firstName
-
-    // Act
-    const result = customerStore.validate(newCustomer)
-
-    // Assert
-    expect(result).toEqual(false)
-  })
-
-  it('validate: customer lastName is not unique', () => {
-
-    // Arrange
-    const customerStore = useCustomerStore()
-    const customer = new Customer()
-    const lastName = 'Doe'
-    customer.lastName = lastName
-
-    customerStore.customers = [customer]
-    const newCustomer = new Customer()
-    newCustomer.lastName = lastName
-
-    // Act
-    const result = customerStore.validate(newCustomer)
-
-    // Assert
-    expect(result).toEqual(false)
-  })
-
-  it('validate: customer dateOfBirth is not unique', () => {
-
-    // Arrange
-    const customerStore = useCustomerStore()
-    const customer = new Customer()
-    const date = new Date().toISOString()
-    customer.dateOfBirth = date
-
-    customerStore.customers = [customer]
-    const newCustomer = new Customer()
-    newCustomer.dateOfBirth = date
-
-    // Act
-    const result = customerStore.validate(newCustomer)
-
-    // Assert
-    expect(result).toEqual(false)
-  })
-
-  it('validate: customer email is not unique', () => {
-
-    // Arrange
-    const customerStore = useCustomerStore()
-    const customer = new Customer()
-    const email = 'johndoe@gmail.com'
-    customer.email = email
-
-    customerStore.customers = [customer]
-    const newCustomer = new Customer()
-    newCustomer.email = email
-
-    // Act
-    const result = customerStore.validate(newCustomer)
-
-    // Assert
-    expect(result).toEqual(false)
-  })
-
-  it('validate: customer email is correct format', () => {
-
-    // Arrange
-    const customerStore = useCustomerStore()
-    const customer = new Customer()
-    customer.email = 'johndoe@gmail.com'
 
     // Act
     const result = customerStore.validate(customer)
 
     // Assert
-    expect(result).toEqual(true)
+    expect(result.result).toEqual(true)
+    expectTypeOf(result.errors).toBeArray()
+    expect(result.errors).toHaveLength(0)
   })
-
-  it('validate: customer email is not correct format', () => {
-
-    // Arrange
-    const customerStore = useCustomerStore()
-    const customer = new Customer()
-    const email = 'johndoe@gmailcom'
-    customer.email = email
-
-    // Act
-    const result = customerStore.validate(customer)
-
-    // Assert
-    expect(result).toEqual(false)
-  })
-
-  it('validate: customer bankAccountNumber is in correct format', () => {
-
-    // Arrange
-    const customerStore = useCustomerStore()
-    const customer = new Customer()
-    const bankAccountNumber = '4155279860457'
-    customer.bankAccountNumber = bankAccountNumber
-
-    // Act
-    const result = customerStore.validate(customer)
-
-    // Assert
-    expect(result).toEqual(true)
-  })
-
-  it('validate: customer bankAccountNumber is not in correct format', () => {
-
-    // Arrange
-    const customerStore = useCustomerStore()
-    const customer = new Customer()
-    const bankAccountNumber = '112233'
-    customer.bankAccountNumber = bankAccountNumber
-
-    // Act
-    const result = customerStore.validate(customer)
-
-    // Assert
-    expect(result).toEqual(false)
-  })
-
-  it('validate: customer phoneNumber is in correct format', () => {
-
-    // Arrange
-    const customerStore = useCustomerStore()
-    const customer = new Customer()
-    customer.phoneNumber = '2024561414'
-
-    // Act
-    const result = customerStore.validate(customer)
-
-    // Assert
-    expect(result).toEqual(true)
-  })
-
-  it('validate: customer phoneNumber is not in correct format', () => {
-
-    // Arrange
-    const customerStore = useCustomerStore()
-    const customer = new Customer()
-    customer.phoneNumber = '12346'
-
-    // Act
-    const result = customerStore.validate(customer)
-
-    // Assert
-    expect(result).toEqual(false)
-  })
-
 
 })

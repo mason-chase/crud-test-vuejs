@@ -2,8 +2,7 @@ import { it, describe, expect, expectTypeOf } from 'vitest'
 import { Customer } from '~/domain/customer'
 import { validatorTypes } from '~/infrastructure/interfaces/plugins/validator'
 import CustomerValidator, { isEmpty } from '~/infrastructure/plugins/validator'
-
-const customer = new Customer('john', 'doe', '2024561414', 'johndoe@gmail.com', '4155279860457', new Date().toISOString())
+import { customer } from '../../mock'
 
 describe('isEmpty', () => {
 
