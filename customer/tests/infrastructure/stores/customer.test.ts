@@ -159,17 +159,81 @@ describe('Actions', () => {
     expect(result).toEqual(true)
   })
 
-  it('validate: customer is not valid', () => {
+  it('validate: customer firstName is not unique', () => {
 
     // Arrange
     const customerStore = useCustomerStore()
     const customer = new Customer()
+    const firstName = 'John'
+    customer.firstName = firstName
+
     customerStore.customers = [customer]
+    const newCustomer = new Customer()
+    newCustomer.firstName = firstName
 
     // Act
-    const result = customerStore.validate(customer)
+    const result = customerStore.validate(newCustomer)
 
     // Assert
     expect(result).toEqual(false)
   })
+
+  it('validate: customer lastName is not unique', () => {
+
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+    const lastName = 'Doe'
+    customer.lastName = lastName
+
+    customerStore.customers = [customer]
+    const newCustomer = new Customer()
+    newCustomer.lastName = lastName
+
+    // Act
+    const result = customerStore.validate(newCustomer)
+
+    // Assert
+    expect(result).toEqual(false)
+  })
+
+  it('validate: customer dateOfBirth is not unique', () => {
+
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+    const date = new Date()
+    customer.dateOfBirth = date
+
+    customerStore.customers = [customer]
+    const newCustomer = new Customer()
+    newCustomer.dateOfBirth = date
+
+    // Act
+    const result = customerStore.validate(newCustomer)
+
+    // Assert
+    expect(result).toEqual(false)
+  })
+
+  it('validate: customer email is not unique', () => {
+
+    // Arrange
+    const customerStore = useCustomerStore()
+    const customer = new Customer()
+    const email = 'johndoe@gmail.com'
+    customer.email = email
+
+    customerStore.customers = [customer]
+    const newCustomer = new Customer()
+    newCustomer.email = email
+
+    // Act
+    const result = customerStore.validate(newCustomer)
+
+    // Assert
+    expect(result).toEqual(false)
+  })
+
+
 })
