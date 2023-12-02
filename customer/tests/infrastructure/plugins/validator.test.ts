@@ -3,6 +3,7 @@ import { Customer } from '~/domain/customer'
 import { validatorTypes } from '~/infrastructure/interfaces/plugins/validator'
 import CustomerValidator, { isEmpty } from '~/infrastructure/plugins/validator'
 import { customer } from '../../mock'
+import { idGenerator } from '~/domain/base'
 
 describe('isEmpty', () => {
 
@@ -57,6 +58,7 @@ describe('validateUnique', () => {
     // Arrange
     const validator = new CustomerValidator()
     const newCustomer = new Customer('john', 'daniel', '2024561413', 'jackdaniel@gmail.com', '4155279860456', new Date(0).toString())
+    customer.id = idGenerator()
 
     // Act
     const result = validator.validateUnique([customer], newCustomer)

@@ -17,10 +17,7 @@ export default class CustomerValidator {
 
     properties.forEach(property => {
 
-      // prevnets invoking validation on update of a customer
-      customers = customers.filter(x => x !== customer)
-
-      if (customers.some((x: Customer) => x[property] === customer[property]))
+      if (customers.some((x: Customer) => x.id !== customer.id && x[property] === customer[property]))
         errors.push(this.messageGenerator(property, validatorTypes.Unique))
     })
 
