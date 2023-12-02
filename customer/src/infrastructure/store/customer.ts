@@ -62,9 +62,9 @@ export const useCustomerStore = defineStore('customer', {
         }
 
       errors = errors.concat(validator.validateUnique(this.customers, customer).errors)
-      errors = errors.concat(validator.validateEmail(this.customers).errors)
-      errors = errors.concat(validator.validateBankAccount(this.customers).errors)
-      errors = errors.concat(validator.validatePhoneNumber(this.customers).errors)
+      errors = errors.concat(validator.validateEmail(customer).errors)
+      errors = errors.concat(validator.validateBankAccount(customer).errors)
+      errors = errors.concat(validator.validatePhoneNumber(customer).errors)
 
       return {
         result: errors.length === 0,
