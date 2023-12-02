@@ -20,7 +20,7 @@ Customer:
 - ~~Refactor validations and make seprate classes~~
 
 - ~~Implement customer list~~
-- Complete customeer list functionality
+- ~~Complete customeer list functionality~~
 
 - BDD
 
