@@ -53,7 +53,7 @@
               </div>
             </div>
             <div class="customer-buttons">
-              <i class="fa-solid fa-trash small-button delete" @click="deleteCustomer(customer)"></i>
+              <i class="fa-solid fa-trash small-button delete" @click="deleteCustomer(customer, index)"></i>
               <i v-if="customer.readonly" class="fa-solid fa-edit small-button" @click="editCustomer(customer)"></i>
               <i v-else class="fa-solid fa-check small-button" @click="saveCustomer(customer, index)"></i>
             </div>
@@ -107,18 +107,15 @@
       /**
        * Deletes customer by given id.
        */
-      deleteCustomer(customer: Customer): void {
+      deleteCustomer(customer: Customer, index: number): void {
 
         if (customer.id)
           this.customerStore.delete(customer.id)
-        else {
-          const index = this.customers.findIndex((x: Customer) => x === customer)
 
-          if (index > -1)
-            this.customers.splice(index, 1)
-        }
+        // this will delete not saved customers
+        // and also removes deleted customer in db from data
+        this.customers.splice(index, 1)
 
-        this.fetchData()
         this.clearFormErrors()
       },
       /**
