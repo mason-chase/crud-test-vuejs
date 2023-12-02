@@ -1,5 +1,5 @@
 <template>
-  <div class="card title">Customer's List</div>
+  <h3 class="card title">Customers List</h3>
   <div id="customerList">
     <div v-if="formErrors" class="formErrors">{{ formErrors }}</div>
     <div class="card">
