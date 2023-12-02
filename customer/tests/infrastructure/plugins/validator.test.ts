@@ -56,9 +56,10 @@ describe('validateUnique', () => {
 
     // Arrange
     const validator = new CustomerValidator()
+    const newCustomer = new Customer('john', 'daniel', '2024561413', 'jackdaniel@gmail.com', '4155279860456', new Date(0).toString())
 
     // Act
-    const result = validator.validateUnique([customer], customer)
+    const result = validator.validateUnique([customer], newCustomer)
 
     // Assert
     expect(result.result).toEqual(false)
