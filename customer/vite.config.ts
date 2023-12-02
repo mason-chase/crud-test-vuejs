@@ -1,8 +1,8 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import federation from "@originjs/vite-plugin-federation";
+import { defineConfig } from "vite"
+import vue from "@vitejs/plugin-vue"
+import federation from "@originjs/vite-plugin-federation"
 
-const APPLICATION_PORT = 3001;
+const APPLICATION_PORT = 3001
 const path = require("path")
 
 // https://vitejs.dev/config/
@@ -26,7 +26,7 @@ export default defineConfig({
       exposes: {
         "./App": "./src/App.vue",
       },
-      shared: ["vue"],
+      shared: ["vue", 'pinia'],
     }),
   ],
   resolve: {
@@ -36,4 +36,4 @@ export default defineConfig({
       "components": path.resolve(__dirname, "./src/infrastructure/components"),
     },
   },
-});
+})

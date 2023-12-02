@@ -1,11 +1,17 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './infrastructure/router'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { listenRemoteRoutes } from './infrastructure/router/remoteRoutes'
 
 const app = createApp(App)
-listenRemoteRoutes(router);
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
-app.use(router);
+listenRemoteRoutes(router)
+
+app.use(router)
+app.use(pinia)
 
 app.mount('#app')
