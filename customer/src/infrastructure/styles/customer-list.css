@@ -6,10 +6,15 @@
   border-radius: 13px;
   padding: 10px;
   background-color: #dcdcdc;
+  overflow-y: auto;
+}
+
+.d-flex {
+  display: flex;
 }
 
 .text-primary {
-  color: black!important;
+  color: #4b4b4b!important;
 }
 
 .text-secondary {
@@ -20,16 +25,27 @@
   margin-bottom: 10px;
 }
 
+.formErrors {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #f95e5e;
+  color: #ffffffff;
+  border-radius: 13px;
+  padding: 10px;
+  white-space: pre;
+}
+
 #customerList {
   height: 90vh;
-  overflow-y: auto;
-
+  position: relative;
 }
 
 #customerList .customer-list-header {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row-reverse;
   margin-bottom: 10px;
+  justify-content: space-between;
 }
 
 #customerList .customer-list-header .button {
@@ -60,6 +76,10 @@
   text-align: left;
 }
 
+#customerList .customer-list-body .customer-card .customer-info .value {
+  margin-left: 5px;
+}
+
 #customerList .customer-list-body .customer-card .customer-info .main-info {
   font-size: 32px;
 }
@@ -73,6 +93,11 @@
   justify-content: flex-end;
 }
 
+#customerList .customer-list-body .customer-card .customer-card-header .customer-buttons {
+  display: flex;
+  gap: 5px;
+  align-self: flex-start;
+}
 
 #customerList .customer-list-body .customer-card .customer-card-header .small-button {
   cursor: pointer;
