@@ -22,6 +22,7 @@ Customer:
 - ~~Implement customer list~~
 - ~~Complete customeer list functionality~~
 
-- BDD
+- ~~Refactor~~
+- ~~Update README.md~~
 
-- Refactor
+- BDD
