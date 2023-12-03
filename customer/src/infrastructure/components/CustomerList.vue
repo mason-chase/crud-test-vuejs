@@ -4,11 +4,11 @@
     <div v-if="formErrors" class="formErrors">{{ formErrors }}</div>
     <div class="card">
       <div class="customer-list-header">
-        <button @click="addCustomer" class="button">Add</button>
-        <button @click="deleteAll" class="button">Delete All</button>
+        <button @click="addCustomer" class="button" test-id="addBtn">Add</button>
+        <button @click="deleteAll" class="button" test-id="deleteAllBtn">Delete All</button>
       </div>
       <div class="customer-list-body">
-        <div v-for="(customer, index) in customers" :key="index" class="customer-card">
+        <div v-for="(customer, index) in customers" :key="index" class="customer-card" :test-id="`customerCard-${index}`">
           <div class="customer-card-header">
             <div class="customer-info">
               <div class="text-primary">
