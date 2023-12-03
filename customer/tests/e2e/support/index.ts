@@ -9,6 +9,9 @@ declare global {
        */
       clickThe(selector: string): Chainable<JQuery<HTMLElement>>
       existsThe(selector: string): Chainable<JQuery<HTMLElement>>
+      fillThe(selector: string, value: string): Chainable<JQuery<HTMLElement>>
+      getThe(selector: string): Chainable<JQuery<HTMLElement>>
+      notExistsThe(selector: string): Chainable<JQuery<HTMLElement>>
     }
   }
 }
