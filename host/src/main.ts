@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import App from './App.vue'
+import App from './presentation/views/App.vue'
 import router from './infrastructure/router'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { listenRemoteRoutes } from './infrastructure/router/remoteRoutes'

@@ -24,7 +24,7 @@ export default defineConfig({
       name: "customer",
       filename: "customer.js",
       exposes: {
-        "./App": "./src/App.vue",
+        "./App": "./src/presentation/views/App.vue",
       },
       shared: ["vue", 'pinia'],
     }),
