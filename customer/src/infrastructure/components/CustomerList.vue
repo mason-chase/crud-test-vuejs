@@ -32,21 +32,21 @@
                 <div class="d-flex">
                   <div class="label">Email:</div>
                   <div class="value">
-                    <span v-if="customer.readonly">{{ customer.email }}</span>
+                    <span data-test="emailReadonly" v-if="customer.readonly">{{ customer.email }}</span>
                     <input v-else type="email" v-model="customer.email" id="email" data-test="email" placeholder="Email">
                   </div>
                 </div>
                 <div class="d-flex">
                   <div class="label">Phone Number:</div>
                   <div class="value">
-                    <span v-if="customer.readonly">{{ customer.phoneNumber }}</span>
+                    <span data-test="phoneNumberReadonly" v-if="customer.readonly">{{ customer.phoneNumber }}</span>
                     <input v-else type="text" v-model="customer.phoneNumber" id="phoneNumber" data-test="phoneNumber" placeholder="Phone Number">
                   </div>
                 </div>
                 <div class="d-flex">
                   <div class="label">Bank Account Number:</div>
                   <div class="value">
-                    <span v-if="customer.readonly">{{ customer.bankAccountNumber }}</span>
+                    <span data-test="bankAccountNumberReadonly" v-if="customer.readonly">{{ customer.bankAccountNumber }}</span>
                     <input v-else type="text" v-model="customer.bankAccountNumber" id="bankAccountNumber" data-test="bankAccountNumber" placeholder="Bank Account Number">
                   </div>
                 </div>
@@ -62,7 +62,7 @@
             <div class="d-flex">
               <div class="label">Date Of Birth:</div>
               <div class="value">
-                <span v-if="customer.readonly">{{ new Date(customer.dateOfBirth).toLocaleDateString() }}</span>
+                <span data-test="dateOfBirthReadonly" v-if="customer.readonly">{{ new Date(customer.dateOfBirth).toLocaleDateString() }}</span>
                 <input v-else type="date" v-model="customer.dateOfBirth" min="1900-01-01" max="2099-12-31" id="dateOfBirth" data-test="dateOfBirth" placeholder="Date Of Birth">
               </div>
             </div>
