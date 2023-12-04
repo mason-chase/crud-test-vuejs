@@ -219,5 +219,5 @@ Given("Adding one customer", () => {
 
 Then("Updating customer but before clicking save refresh the page then data should not be saved", () => {
   cy.reload()
-  cy.get(TestIds.FullName).should('not.contain', 'updated')
+  cy.get(`[data-test=${TestIds.FullName}]`).should('not.contain', 'updated')
 })

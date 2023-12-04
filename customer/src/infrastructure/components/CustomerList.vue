@@ -103,6 +103,7 @@
         this.customers.forEach((customer: Customer) => {
           customer.readonly = true
         })
+        this.clearFormErrors()
       },
       /**
        * Deletes customer by given id.
@@ -132,14 +133,13 @@
         const validated = this.customerStore.validate(customer)
 
         if (validated.result) {
-          customer.readonly = true
 
           if (customer.id)
             this.customerStore.update(customer)
           else
             this.customerStore.create(customer)
 
-          this.clearFormErrors()
+          this.fetchData()
         }
         else
           this.generateHumanReadableErrors(validated.errors, index)
@@ -157,7 +157,6 @@
       deleteAll() {
         this.customerStore.clear()
         this.fetchData()
-        this.clearFormErrors()
       },
       /**
        * Generates human readable form errors.
