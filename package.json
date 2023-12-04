@@ -1,43 +1,25 @@
 {
-  "name": "my-vue-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "microfrontend-vite-crud-customer",
+  "version": "1.0.0",
+  "description": "",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "start": "run-s build serve",
+    "build": "pnpm --parallel --filter=\"!./host\" build",
+    "test:unit": "pnpm --parallel --filter=\"!./host\" test:unit",
+    "test:unit-ui": "pnpm --parallel --filter=\"!./host\" test:unit-ui",
+    "test:unit-watch": "pnpm --parallel --filter=\"!./host\" test:unit-watch",
+    "serve": "run-p serve-remotes serve-host",
+    "serve-remotes": "pnpm --parallel --filter=\"!./host\" preview",
+    "serve-host": "pnpm --parallel --filter=\"./host\" dev",
+    "stop": "kill-port --port 3000,3001",
+    "test:e2e": "pnpm --parallel --filter=\"!./host\" test:e2e",
+    "test:e2e-ui": "pnpm --parallel --filter=\"!./host\" test:e2e-ui",
+    "test:e2e-tags": "pnpm --parallel --filter=\"!./host\" test:e2e-tags"
   },
-  "dependencies": {
-    "core-js": "^3.8.3",
-    "vue": "^3.2.13"
-  },
+  "private": true,
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ]
+    "@originjs/vite-plugin-federation": "^1.2.1",
+    "kill-port": "^2.0.1",
+    "npm-run-all": "^4.1.5"
+  }
 }

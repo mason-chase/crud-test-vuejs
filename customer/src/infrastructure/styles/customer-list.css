@@ -1,0 +1,147 @@
+.card {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  height: 100%;
+  border-radius: 13px;
+  padding: 10px;
+  background-color: #eff7ff;
+  overflow-y: auto;
+  border: 1px solid #a8d3ff
+}
+
+
+::-webkit-scrollbar {
+  width: 17px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+input {
+  border-radius: 4px;
+  border-color: #b9b9b9;
+  border-style: solid;
+  color: #4b4b4b!important
+}
+
+::placeholder {
+  color: #aaa;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.text-primary {
+  color: #4b4b4b!important;
+}
+
+.text-secondary {
+  color: #aaa;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.formErrors {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #f95e5e;
+  color: #ffffffff;
+  border-radius: 13px;
+  padding: 10px;
+  white-space: pre;
+}
+
+#customerList {
+  height: 90vh;
+  position: relative;
+}
+
+#customerList .customer-list-header {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+#customerList .customer-list-header .button {
+  padding: 5px 15px;
+  border-radius: 8px;
+  border-color: #ffffff8f;
+  cursor: pointer;
+  color: white;
+  background: #7ebeff;
+  font-size: 14px;
+}
+
+#customerList .customer-list-header .button:focus {
+  outline-color: #3e54fd;
+}
+
+#customerList .customer-list-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
+}
+
+#customerList .customer-list-body .customer-card {
+  background-color: #ffffffff;
+  border-radius: 18px;
+  padding: 20px;
+  margin: 5px 10px
+}
+
+#customerList .customer-list-body .customer-card .customer-card-header {
+  display: flex;
+}
+
+#customerList .customer-list-body .customer-card .customer-info {
+  flex-grow: 1;
+  text-align: left;
+}
+
+#customerList .customer-list-body .customer-card .value {
+  margin-left: 5px;
+}
+
+#customerList .customer-list-body .customer-card .customer-info .label {
+  margin-bottom: 5px;
+}
+
+#customerList .customer-list-body .customer-card .customer-info .main-info {
+  font-size: 32px;
+}
+
+#customerList .customer-list-body .customer-card .customer-info .second-info {
+  margin-left: 10px;
+}
+
+#customerList .customer-list-body .customer-card .customer-card-bottom {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#customerList .customer-list-body .customer-card .customer-card-header .customer-buttons {
+  display: flex;
+  gap: 10px;
+  align-self: flex-start;
+}
+
+#customerList .customer-list-body .customer-card .customer-card-header .small-button {
+  cursor: pointer;
+  color: #4b4b4b!important;
+}
+
+#customerList .customer-list-body .customer-card .customer-card-header .small-button.delete {
+  color: #f95e5e!important;
+}
