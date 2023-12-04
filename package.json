@@ -5,9 +5,9 @@
   "scripts": {
     "start": "run-s build serve",
     "build": "pnpm --parallel --filter=\"!./host\" build",
-    "test:unit": "pnpm --parallel --filter=\"!./host\" test",
-    "test:unit-ui": "pnpm --parallel --filter=\"!./host\" test:ui",
-    "test:unit-watch": "pnpm --parallel --filter=\"!./host\" test:watch",
+    "test:unit": "pnpm --parallel --filter=\"!./host\" test:unit",
+    "test:unit-ui": "pnpm --parallel --filter=\"!./host\" test:unit-ui",
+    "test:unit-watch": "pnpm --parallel --filter=\"!./host\" test:unit-watch",
     "serve": "run-p serve-remotes serve-host",
     "serve-remotes": "pnpm --parallel --filter=\"!./host\" preview",
     "serve-host": "pnpm --parallel --filter=\"./host\" dev",
